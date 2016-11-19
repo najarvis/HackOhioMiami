@@ -102,6 +102,61 @@ class Obstacle extends Entity{
 
 }
 
+class Player extends Entity{
+	constructor(handler, x, y, width, height, color){
+	    super(handler, x, y, width, height, color);
+		this.shape = "circle";
+		this.visiondir = [new vector(Math.cos(pi/3),Math.Sin(pi/3)), 
+						new vector(Math.cos(0),Math.Sin(0)), 
+						new vector(Math.cos(-pi/3),Math.Sin(-pi/3))];
+		this.visiondistance = 5;
+	}
+
+	checkCollisions(){
+		for (var i = 0; i < this.handler.entities.length; i++) {
+			if (this.handler.entities[i].shape == "rectangle"){
+				if (circleRectCollision(this, this.handler.entities[i])){
+					this.onCollide();
+				}
+			} else if (this.handler.entities[i].shape == "triangle"){
+				if (circleCircleCollision(this, this.handler.entities[i])){
+					this.onCollide();
+				}
+			}
+		}
+	}
+
+	onCollide(object){
+		return;
+	}
+
+	drawVission(){
+		var p1 = this.visiondir[0].mul(this.visiondistance);
+		var p2 = this.visiondir[1].mul(this.visiondistance);
+		var p3 = this.visiondir[2].mul(this.visiondistance);
+		ctx.beginPath();
+		ctx.moveTo(this.pos.elements[0],this.pos.elements[1]);
+		ctx.lineTo(p1.elements[0],p1.elements[1]);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(20,20);
+		ctx.bezierCurveTo(p1.elements[0],p1.elements[1],p2.elements[0],
+						p2.elements[1],p3.elements[0],p3.elements[1]);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(this.pos.elements[0],this.pos.elements[1]));
+		ctx.lineTo(p3.elements[0],p3.elements[1]);
+		ctx.stroke();
+	}
+
+	update() {
+		return;
+	}
+
+}
+
 class Guard extends Entity {
     
     constructor(handler, x, y, width, height) {
