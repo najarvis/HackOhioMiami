@@ -20,9 +20,9 @@ class Entity {
         if (this.shape == "rectangle") {
             var ctx = gameSpace.context;
             ctx.fillStyle = this.color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.fillRect((this.x - this.width / 2), (this.y - this.height / 2), this.width, this.height);
             ctx.strokeStyle = "#000000";
-            ctx.strokeRect(this.x, this.y, this.width, this.height);
+            ctx.strokeRect((this.x - this.width / 2), (this.y - this.height / 2), this.width, this.height);
 
         } else if (this.shape == "circle"){
             var ctx = gameSpace.context;
@@ -91,8 +91,8 @@ class Entity {
 }
 
 class Obstacle extends Entity{
-	constructor(handler, x, y, width, height, color){
-	    super(handler, x, y, width, height, color);
+	constructor(handler, x, y, width, height){
+	    super(handler, x, y, width, height, "#aaaaaa");
 		this.shape = "rectangle";
 	}
 
@@ -105,7 +105,7 @@ class Obstacle extends Entity{
 class Guard extends Entity {
     
     constructor(handler, x, y, width, height) {
-        super(handler, x, y, width, height, "bb0000");
+        super(handler, x, y, width, height, "#ff0000");
         this.shape = "triangle";
     }
 }
