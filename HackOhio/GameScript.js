@@ -129,13 +129,12 @@ function entity(handler, x, y, width, height, color) {
             
             ctx.beginPath();
             ctx.moveTo(this.x - this.width / 2, this.y + this.height / 2);
-            ctx.moveTo(this.x + this.width / 2, this.y + this.height / 2);
-            ctx.moveTo(this.x, this.y - this.height / 2);
+            ctx.lineTo(this.x + this.width / 2, this.y + this.height / 2);
+            ctx.lineTo(this.x, this.y - this.height / 2);
             ctx.closePath();
             
             ctx.fill();
             ctx.stroke();
-            console.log(this.x + " " + (this.x + this.width / 2) + " " + (this.y + this.height / 2));
         }
 	}
 
