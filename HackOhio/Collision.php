@@ -23,8 +23,6 @@
 	</style>
 </head>
 <body onload="startGame()">
-	<script src="HackOhio/vector.js"></script>
-	<script src="HackOhio/GameScript.js"></script>
 	<script src="HackOhio/Test.js"></script>
 </body>
 </html>
