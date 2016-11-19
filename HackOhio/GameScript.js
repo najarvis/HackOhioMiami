@@ -16,10 +16,9 @@ var gameSpace = {
 		this.context = this.canvas.getContext("2d");
 
 		this.gameHandler = new gameHandler(this.canvas.width, this.canvas.height);
-		for (var i = 0; i < 30; i++) {
-			this.generateRandomEntity(this.gameHandler);
-		}
-		this.gameHandler.draw();
+		this.gameHandler.addEntity(new entity(this.gameHandler, 20, 20, 32, 32, "#888888"));
+        
+        this.gameHandler.draw();
 
 		// Every 20 milliseconds (a little slower than 60fps), run the updateAndRender method with this.gameHandler as the parameter.
 		setInterval(this.updateAndRender, 20, this.gameHandler);
@@ -96,15 +95,48 @@ function entity(handler, x, y, width, height, color) {
 	this.color = color;
 
 	this.pos = new vector(x, y);
-	this.vel = new vector(randSign(randInt(4, 10)), randSign(randInt(4, 10)));
+	//this.vel = new vector(randSign(randInt(4, 10)), randSign(randInt(4, 10)));
+    this.vel = new vector(0, 0);
+    this.shape = "triangle";
+
 
 	// Draws a rectangle for the entity at it's position and in it's dimensions.
 	this.draw = function() {
-		var ctx = gameSpace.context;
-		ctx.fillStyle = color;
-		ctx.fillRect(this.x, this.y, this.width, this.height);
-		ctx.strokeStyle = "#000000";
-		ctx.strokeRect(this.x, this.y, this.width, this.height);
+        if (this.shape == "square") {
+            var ctx = gameSpace.context;
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.strokeStyle = "#000000";
+            ctx.strokeRect(this.x, this.y, this.width, this.height);
+
+        } else if (this.shape == "circle"){
+            var ctx = gameSpace.context;
+            var r = 16;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, r, 0, 2 * Math.PI, false);
+            ctx.fillStyle = color;
+            ctx.fill();
+
+            ctx.strokeStyle = "#000000";
+            ctx.stroke();
+            ctx.closePath();
+
+        } else if (this.shape == "triangle") {
+            
+            var ctx = gameSpace.context;
+            ctx.fillStyle = color;
+            ctx.strokeStyle = "#000000";
+            
+            ctx.beginPath();
+            ctx.moveTo(this.x - this.width / 2, this.y + this.height / 2);
+            ctx.moveTo(this.x + this.width / 2, this.y + this.height / 2);
+            ctx.moveTo(this.x, this.y - this.height / 2);
+            ctx.closePath();
+            
+            ctx.fill();
+            ctx.stroke();
+            console.log(this.x + " " + (this.x + this.width / 2) + " " + (this.y + this.height / 2));
+        }
 	}
 
 	this.update = function() {
