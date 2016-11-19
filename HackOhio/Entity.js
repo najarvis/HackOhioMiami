@@ -1,3 +1,4 @@
+"use strict";
 class Entity {
 	
     constructor(handler, x, y, width, height, color) {
@@ -8,20 +9,17 @@ class Entity {
 		this.width = width;
 		this.height = height;
 		this.color = color;
-	}
-	
 
-	this.pos = new vector(x, y);
-	//this.vel = new vector(randSign(randInt(4, 10)), randSign(randInt(4, 10)));
-    this.vel = new vector(0, 0);
-    this.shape = "circle";
-
+        this.pos = new vector(x, y);
+        this.vel = new vector(0, 0);
+        this.shape = "circle";
+    }
 
 	// Draws a rectangle for the entity at it's position and in it's dimensions.
 	draw() {
         if (this.shape == "rectangle") {
             var ctx = gameSpace.context;
-            ctx.fillStyle = color;
+            ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
             ctx.strokeStyle = "#000000";
             ctx.strokeRect(this.x, this.y, this.width, this.height);
@@ -31,7 +29,7 @@ class Entity {
             var r = 16;
             ctx.beginPath();
             ctx.arc(this.x, this.y, r, 0, 2 * Math.PI, false);
-            ctx.fillStyle = color;
+            ctx.fillStyle = this.color;
             ctx.fill();
 
             ctx.strokeStyle = "#000000";
@@ -41,7 +39,7 @@ class Entity {
         } else if (this.shape == "triangle") {
             
             var ctx = gameSpace.context;
-            ctx.fillStyle = color;
+            ctx.fillStyle = this.color;
             ctx.strokeStyle = "#000000";
             
             ctx.beginPath();

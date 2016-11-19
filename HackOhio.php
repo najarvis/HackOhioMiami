@@ -23,7 +23,10 @@
 	</style>
 </head>
 <body onload="startGame()">
-	<script src="HackOhio/vector.js"></script>
-	<script src="HackOhio/GameScript.js"></script>
+    <script src="HackOhio/vector.js"></script>
+    <script src="HackOhio/Collisions.js"></script>
+    <script src="HackOhio/Entity.js"></script>
+    <script src="HackOhio/GameHandler.js"></script>
+	<script src="HackOhio/GameScriptNew.js"></script>
 </body>
 </html>

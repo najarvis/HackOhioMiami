@@ -1,3 +1,5 @@
+"use strict";
+
 class GameHandler {
 
     // Initialize the GameHandler. width and height are the width and

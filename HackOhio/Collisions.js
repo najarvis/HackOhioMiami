@@ -15,14 +15,14 @@ function circleRectCollision(circle, rectangle){
 
     // If the distance is less than the circle's radius, an intersection occurs
     var distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-    return distanceSquared < (circle.Radius * circle.Radius);
+    return (distanceSquared < (circle.Radius * circle.Radius));
 }
 
 function circleCircleCollision(circle1,circle2){
     var distance = circle1.pos.distanceTo(circle2)
-    if distance <= (circle1.radius + circle2.radius){
-        return false
-    }else{
-        return true
+    if (distance <= (circle1.radius + circle2.radius)){
+        return false;
+    } else{
+        return true;
     }
 }
