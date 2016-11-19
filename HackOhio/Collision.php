@@ -22,7 +22,8 @@
 		}
 	</style>
 </head>
-<body onload="startGame()">
+<body onload="">
+	<script src="HackOhio/Collision.js"></script>
 	<script src="HackOhio/Test.js"></script>
 </body>
 </html>
