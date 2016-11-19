@@ -7,6 +7,8 @@ class GameHandler {
         this.width = width;
         this.height = height;
         this.entities = [];
+
+        this.rules = {"clamp-border":true, "use-gravity": true};
     }
 
     addEntity(entity) {

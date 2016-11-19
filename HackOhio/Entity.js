@@ -1,7 +1,8 @@
-Class Entity{
-	constructor(handler, x, y, width, height, color) {
+class Entity {
+	
+    constructor(handler, x, y, width, height, color) {
 		this.handler = handler;
-		this.type = ""
+		this.type = "";
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -13,11 +14,11 @@ Class Entity{
 	this.pos = new vector(x, y);
 	//this.vel = new vector(randSign(randInt(4, 10)), randSign(randInt(4, 10)));
     this.vel = new vector(0, 0);
-    this.shape = "triangle";
+    this.shape = "circle";
 
 
 	// Draws a rectangle for the entity at it's position and in it's dimensions.
-	function draw() {
+	draw() {
         if (this.shape == "rectangle") {
             var ctx = gameSpace.context;
             ctx.fillStyle = color;
@@ -54,7 +55,7 @@ Class Entity{
         }
 	}
 
-	function update() {
+	update() {
 		// If gravity is enabled, it pulls it to the bottom of the screen.
 		if (this.handler.rules["use-gravity"]){
 			if (this.y < this.handler.height - this.height) {
@@ -91,14 +92,22 @@ Class Entity{
 	}
 }
 
-Class Obstacle extends Entity{
+class Obstacle extends Entity{
 	constructor(handler, x, y, width, height, color){
-		Super(handler, x, y, width, height, color)
-		this.shape = "Rectangle"
+	    super(handler, x, y, width, height, color);
+		this.shape = "rectangle";
 	}
 
-	function update() {
-		Return;
+	update() {
+		return;
 	}
 
+}
+
+class Guard extends Entity {
+    
+    constructor(handler, x, y, width, height) {
+        super(handler, x, y, width, height, "bb0000");
+        this.shape = "triangle";
+    }
 }
