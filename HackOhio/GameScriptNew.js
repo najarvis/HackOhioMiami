@@ -14,7 +14,7 @@ var gameSpace = {
         this.context = this.canvas.getContext("2d");
 
         this.gameHandler = new GameHandler();
-
+        this.gameHandler.loadLevel("HackOhio/levels/level-1.json");
         this.gameHandler.draw();
 
         setInterval(this.updateAndRender, 20, this.gameHandler);

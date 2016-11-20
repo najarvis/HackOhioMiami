@@ -6,16 +6,17 @@ function clamp(val, min, max) {
 function circleRectCollision(circle, rectangle){
     // Find the closest point to the circle within the rectangle
     // Assumes axis alignment! ie rect must not be rotated
-    var closestX = clamp(circle.X, rectangle.x, rectangle.x + rectangle.width);
-    var closestY = clamp(circle.Y, rectangle.y, rectangle.y + rectangle.height);
+    var closestX = clamp(circle.x, rectangle.x - (rectangle.width/2), rectangle.x + (rectangle.width/2));
+    var closestY = clamp(circle.y, rectangle.y - (rectangle.height/2), rectangle.y + (rectangle.height/2));
 
     // Calculate the distance between the circle's center and this closest point
-    var distanceX = circle.X - closestX;
-    var distanceY = circle.Y - closestY;
+    var distanceX = circle.x - closestX;
+    var distanceY = circle.y - closestY;
 
     // If the distance is less than the circle's radius, an intersection occurs
     var distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-    return (distanceSquared < (circle.Radius * circle.Radius));
+    var isTouching = (distanceSquared < (circle.width/2 * circle.width/2));
+    return isTouching;
 }
 
 function circleCircleCollision(circle1,circle2){

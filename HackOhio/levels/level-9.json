@@ -1,0 +1,14 @@
+{
+    "entities" : [
+        {"type": "wall", "x": 8, "y": 0.5, "width": 16, "height": 1},
+        {"type": "wall", "x": 0.5, "y": 4, "width": 1, "height": 6},
+        {"type": "wall", "x": 8, "y": 7.5, "width": 16, "height": 1},
+        {"type": "wall", "x": 15.5, "y": 4, "width": 1, "height": 6},
+        {"type": "wall", "x": 3.5, "y": 1.5, "width": 2, "height": 1},
+        {"type": "wall", "x": 5.25, "y": 3.5, "width": 1, "height": 2},
+        {"type": "wall", "x": 8, "y": 3, "width": 4.5, "height": 1},
+        {"type": "wall", "x": 9, "y": 6.5, "width": 2, "height": 1},
+        {"type": "player", "x": 2, "y": 1.5, "width": 0.32, "height": 0.32},
+        {"type": "goal", "x": 14.5, "y": 2, "width": 0.64, "height": 0.64}
+    ]
+}

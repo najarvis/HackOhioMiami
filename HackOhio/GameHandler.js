@@ -23,6 +23,47 @@ class GameHandler {
         if (i != -1) this.entities = this.entities.splice(i, 1);
     }
 
+    clearEntities() {
+        this.entities = [];
+    }
+
+    loadLevel(levelName) {
+        var a = this;
+        var scale = 100;
+        this.clearEntities();
+        $.getJSON(levelName, function(data) {
+            data.entities.forEach(function(element) {
+                if (element.type == "wall") {
+                    a.addEntity( new Obstacle(a,
+                            element.x * scale,
+                            element.y * scale,
+                            element.width * scale,
+                            element.height * scale));
+
+                } else if (element.type == "player") {
+                    a.addEntity(new Player(a,
+                            element.x * scale,
+                            element.y * scale,
+                            element.width * scale,
+                            element.height * scale));
+
+                } else if (element.type == "enemy") {
+                    a.addEntity(new Guard(a,
+                            element.x * scale,
+                            element.y * scale,
+                            element.width * scale,
+                            element.height * scale));
+                } else if (element.type == "goal") {
+                    a.addEntity(new Goal(a,
+                            element.x * scale,
+                            element.y * scale,
+                            element.width * scale,
+                            element.height * scale));
+                }
+            });
+        });
+    }
+
     update() {
         for (var i = 0; i < this.entities.length; i++) {
             this.entities[i].update();
