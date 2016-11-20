@@ -193,8 +193,6 @@ class Player extends Entity{
 
 
 	}
-
-
 }
 
 class Guard extends Entity {
