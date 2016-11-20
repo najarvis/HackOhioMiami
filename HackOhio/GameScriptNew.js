@@ -17,14 +17,14 @@ var gameSpace = {
         this.gameHandler.loadLevel("HackOhio/levels/level-1.json");
         this.gameHandler.draw();
 
-        setInterval(this.updateAndRender, 20, this.gameHandler);
+        setInterval(this.updateAndRender, 0.1, this.gameHandler);
 
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
     },
 
     updateAndRender : function(handler) {
-        handler.update();
+        handler.update(20);
 
         gameSpace.clear();
         handler.draw();

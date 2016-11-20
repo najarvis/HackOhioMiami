@@ -23,7 +23,9 @@
 	</style>
 </head>
 <body onload="startGame()">
+    <script src="bower_components/numjs/dist/numjs.min.js"></script>
     <script src="HackOhio/vector.js"></script>
+    <script src="HackOhio/Brain.js"></script>
     <script src="HackOhio/Collisions.js"></script>
     <script src="HackOhio/Entity.js"></script>
     <script src="HackOhio/GameHandler.js"></script>
